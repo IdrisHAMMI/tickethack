@@ -1,0 +1,8 @@
+//TRIPS GENERATED FILES
+trips.json
+
+//NODE MODULES
+node_modules
+
+//ENVIRONMENT VARIABLES
+env/.env
