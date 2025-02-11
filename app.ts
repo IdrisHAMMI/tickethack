@@ -1,5 +1,5 @@
-//import dotenv from 'dotenv';
-//dotenv.config({ path: 'env/.env' });
+import dotenv from 'dotenv';
+dotenv.config({ path: './env/.env' });
 
 import express from "express";
 import http from 'http';
@@ -28,7 +28,7 @@ server.listen(3000, () => {
   console.log('Server running on http://localhost:3000/');
 })
 
-const MONGODB_URI = "mongodb+srv://hammiidris:j2c1ivpAj5JIu7Dd@cluster0.gudaofb.mongodb.net/tickethack"
+const MONGODB_URI = process.env.MONGODB_URI ?? ''; // FALLBACK TO EMPTY STRING IF UNDEFINED
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
