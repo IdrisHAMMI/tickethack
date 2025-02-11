@@ -1,14 +1,14 @@
-import dotenv from 'dotenv';
-dotenv.config({ path: 'env/.env' });
+//import dotenv from 'dotenv';
+//dotenv.config({ path: 'env/.env' });
 
-const express = require("express");
-const http = require("http");;
-const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
-const compression = require("compression");
-const cors = require("cors");
-const mongoose = require("mongoose");
-//import router from "../routes/config";
+import express from "express";
+import http from 'http';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
+import compression from 'compression';
+import cors from 'cors';
+import mongoose from "mongoose";
+import router from "./routes/config";
 
 const app = express();
 
@@ -28,9 +28,10 @@ server.listen(3000, () => {
   console.log('Server running on http://localhost:3000/');
 })
 
+const MONGODB_URI = "mongodb+srv://hammiidris:j2c1ivpAj5JIu7Dd@cluster0.gudaofb.mongodb.net/tickethack"
 
 mongoose.Promise = Promise;
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(MONGODB_URI);
 mongoose.connection.on('error', (error : Error) => console.log(error));
- 
-//app.use('/', router())
+
+app.use('/', router())
