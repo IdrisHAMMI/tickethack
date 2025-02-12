@@ -6,13 +6,40 @@
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <title>TicketHack - Index</title>
 </head>
-<body>
+<body class="bg-[url(./images/background.jpg)]">
     <header>
-        <nav>
-            <div>
-                
+        <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+            <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+                    <h2 class="text-green-300" alt="tickethack_logo">Tickethack</h2>
+                <div class="flex items-center lg:order-2">
+                    <a href="client/cart.html" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Cart</a>
+                    <a href="booking/cart.html" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Booking</a>
+                </div>
             </div>
         </nav>
     </header>
+    <div class="flex justify-center items-center h-screen">
+        <!-- Wrapper div to center the content -->
+        <div class="flex space-x-6 bg-gray-100  p-6 rounded-lg shadow-lg">
+          <!-- Left container with inputs and button -->
+          <div class="flex flex-col space-y-2">
+          <form id="search-form">
+            <input type="text" id="departure" placeholder="Enter text" class="border border-gray-300 p-2 rounded-md">
+            <input type="text" id="arrival" placeholder="Enter value" class="border border-gray-300 p-2 rounded-md">
+            <input type="date" id="date" placeholder="Enter value" class="border border-gray-300 p-2 rounded-md">            
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">Submit</button>
+          </form>  
+        </div>
+        <!-- Right container with random text -->
+        <div class="results-container overflow-auto">
+          <h2>Search Results</h2>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    </div>
+<script src="script.js"></script>
 </body>
 </html>
