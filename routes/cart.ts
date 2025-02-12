@@ -5,6 +5,6 @@ export default (router: express.Router)=> {
 
   router.post('/api/cart/post/:id', addToCart);
   router.get('/api/cart/get', getCart);
-  router.delete('/cart/:id', deleteFromCart);
+  router.delete('/api/cart/delete/:id', deleteFromCart);
 
 };

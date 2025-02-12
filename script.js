@@ -1,16 +1,18 @@
+//GET CART
 async function fetchCart() {
     try {
       const response = await fetch('http://localhost:3000/api/cart/get/');
       const cartItems = await response.json();
       console.log('Cart items:', cartItems);
   
-      // Display the cart items on the page
       const cartContainer = document.getElementById('cart-container');
       cartContainer.innerHTML = cartItems.map(item => `
         <div class="cart-item">
           <p>${item.departure} to ${item.arrival}</p>
           <p>Date: ${new Date(item.date).toLocaleString()}</p>
           <p>Price: $${item.price}</p>
+          <button onclick="deleteCartById('${cartItems._id}')">Delete</button>          
+
         </div>
       `).join('');
     } catch (error) {
@@ -18,9 +20,27 @@ async function fetchCart() {
     }
   }
   
-  // Call the function to fetch the cart
   fetchCart();
 
+  //DELETE CART ITEMS
+  async function deleteCartById(tripId) {
+
+    try {
+      const response = await fetch(`http://localhost:3000/api/cart/delete/${tripId}`, {
+          method: 'DELETE',
+          
+      });
+      const deletedCartRes = await response.json();
+      console.log('Deleted cart:', deletedCartRes);
+
+      //REFRECH CART DATA UPON DELETION
+      fetchCart();
+  } catch (error) {
+      console.error('Error deleting cart item:', error);
+      }
+  }
+    
+  //SEARCH TRIPS
 document.getElementById('search-form').addEventListener('submit', async (e) => {
     e.preventDefault();
   
@@ -59,3 +79,4 @@ document.getElementById('search-form').addEventListener('submit', async (e) => {
       console.error('Error adding to cart:', error);
     }
 }
+
